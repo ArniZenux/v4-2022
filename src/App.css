@@ -1,38 +1,85 @@
+:root {
+  --fonts: Helvetica, Arial, sans-serif;
+  --color-paperwhite: #ffe;
+  --color-error: #a77;
+  --color-white: #eee;
+  --color-accent: #aa6;
+  --color-accent-dark: #663;
+  --color-accent-light: #cc8;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav {
+  background-color: #646459;
+  min-height: 10vh;
+  min-width: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
-  color: white;
+}
+
+nav ul{
+  list-style: none;
+}
+
+nav li{
+  display: inline-block;
+  margin-right: 4rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #111213;
+  font-size: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*
+* ###########################################
+*/
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-family: var(--fonts);
+}
+
+/*
+* ##############   HEADER   ##############
+*/
+
+.innskra{
+  font-size: 3rem;
+}
+
+/*
+* ##############   BODY   ##############
+*/
+
+ul {
+  margin-bottom: 3rem;
+  list-style-type: none;
+}
+
+li {
+  font-size: 2rem;
+  font-family: var(--fonts);
+  font-weight: 600;
+}
+
+li:first-child{
+  margin-top: 0;
+  padding-top: 0;
+}
+
+li:last-child{
+  margin-top: 0;
+  padding-top: 0;
 }

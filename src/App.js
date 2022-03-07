@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import './App.css';
 
-function App() {
+import { Home } from './routes/home';
+import { Innskra } from './routes/innskra';
+import { Nyskra } from './routes/nyskra';
+import { NotFound } from './routes/notfound';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main> 
+      <nav>
+        <ul>
+          <li><NavLink to="/">Viðburðalisti</NavLink></li>
+          <li><NavLink to="/innskra">Innskrá</NavLink></li>
+          <li><NavLink to="/nyskra">Nýskrá</NavLink></li>
+        </ul>
+      </nav>
+
+      <section>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/innskra" component={Innskra}/>
+          <Route exact path="/nyskra" component={Nyskra}/>
+          <Route component={NotFound} />
+        </Switch>
+      </section>
+    </main>
   );
 }
-
-export default App;

@@ -26,3 +26,4 @@ class Nyskra extends React.Component{
 }
 
 export default Nyskra; 
+

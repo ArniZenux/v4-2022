@@ -2,14 +2,15 @@ import React from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import './App.css';
 
-import { Home } from './routes/home';
-import { Innskra } from './routes/innskra';
-import { Nyskra } from './routes/nyskra';
-import { NotFound } from './routes/notfound';
+import Home from './routes/home';
+import Innskra from './routes/innskra';
+import Nyskra from './routes/nyskra';
+import NotFound from './routes/notfound';
 
-export default function App() {
-  return (
-    <main> 
+class App extends React.Component{ 
+  render() {
+    return (
+     <main> 
       <nav>
         <ul>
           <li><NavLink to="/">Viðburðalisti</NavLink></li>
@@ -28,4 +29,7 @@ export default function App() {
       </section>
     </main>
   );
+ }
 }
+
+export default App;

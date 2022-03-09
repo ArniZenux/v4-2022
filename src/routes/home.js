@@ -11,11 +11,8 @@ class Home extends React.Component{
     <div className="App">
       <h2>Viðburðarlisti</h2>
        <ul>
-        {
-         this.state.posts
-          .map(post => <li> {post.message} </li> 
-          )
-        }
+        <li>Partý</li>
+        <li>Hátið</li>
        </ul>
        <p> Footer Inc </p>
     </div>

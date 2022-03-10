@@ -1,7 +1,6 @@
 import React from 'react';
 
-class Innskra extends React.Component{
-  render(){
+export function Login(){
     return (
       <div className="App">
         <main>
@@ -20,6 +19,3 @@ class Innskra extends React.Component{
     </div>
   );
  }
-}
-
-export default Innskra; 

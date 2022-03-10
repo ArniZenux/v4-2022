@@ -1,8 +1,7 @@
 import React from 'react';
 
-class Nyskra extends React.Component{
-  render(){
-   return (
+export function Nyskra(){
+  return (
     <div className="App">
       <main>
         <h2>Nýskrá</h2>
@@ -21,9 +20,5 @@ class Nyskra extends React.Component{
           </form>
       </main>
      </div>
-    );
-  }
+   );
 }
-
-export default Nyskra; 
-

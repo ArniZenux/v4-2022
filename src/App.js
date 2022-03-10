@@ -1,35 +1,27 @@
 import React from 'react';
-import { Route, Switch, NavLink } from 'react-router-dom';
-import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import './utils/CSS/App.css';
 
-import Home from './routes/home';
-import Innskra from './routes/innskra';
-import Nyskra from './routes/nyskra';
-import NotFound from './routes/notfound';
+import { Layout } from './components/layout/Layout';
 
-class App extends React.Component{ 
-  render() {
-    return (
-     <main> 
-      <nav>
-        <ul>
-          <li><NavLink to="/">Viðburðalisti</NavLink></li>
-          <li><NavLink to="/innskra">Innskrá</NavLink></li>
-          <li><NavLink to="/nyskra">Nýskrá</NavLink></li>
-        </ul>
-      </nav>
+import { Index } from './pages/home';
+import { Innskra }  from './pages/innskra';
+import { NotFound } from './pages/notfound';
 
-      <section>
+export default function App(){
+  return (
+    <Layout footer="" header="">
         <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/innskra" component={Innskra}/>
-          <Route exact path="/nyskra" component={Nyskra}/>
-          <Route component={NotFound} />
+          <Route exact path="/">
+            <Index />
+          </Route>
+          <Route exact path="/innskra" >
+            <Innskra />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
         </Switch>
-      </section>
-    </main>
-  );
- }
+    </Layout> 
+  );    
 }
-
-export default App;

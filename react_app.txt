@@ -1,0 +1,5 @@
+#REACT_APP_API_URL=http://localhost:5000
+#REACT_APP_API_URL=https://vef2-20222-v3-synilausn.herokuapp.com/
+#REACT_APP_API_URL=https://vidburdurapp.herokuapp.com/
+#REACT_APP_API_URL=https://vidburdsdbapp.herokuapp.com/
+#REACT_APP_API_URL=https://vef2-2021-ruv-rss-json-proxy.herokuapp.com/

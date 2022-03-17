@@ -1,4 +1,5 @@
 import React, { useEffect, useState  } from 'react';
+
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export function Home(){
@@ -10,8 +11,10 @@ export function Home(){
     async function fetchData(){
       let json; 
 
+      const url = new URL(apiUrl); 
+
       try{
-        const result = await fetch(apiUrl); 
+        const result = await fetch(url); 
 
         if(!result.ok){
           throw new Error('Ekki ok');

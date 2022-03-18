@@ -1,4 +1,8 @@
 import React, { useEffect, useState  } from 'react';
+//import { Link } from "react-router-dom";
+//import { Event } from '../event/Event';
+
+import s from './Events.module.scss';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -11,10 +15,10 @@ export function Home(){
     async function fetchData(){
       let json; 
 
-      const url = new URL(apiUrl); 
+      //const url = new URL(apiUrl); 
 
       try{
-        const result = await fetch(url); 
+        const result = await fetch(apiUrl); 
 
         if(!result.ok){
           throw new Error('Ekki ok');
@@ -30,7 +34,7 @@ export function Home(){
         setLoading(false); 
       }
 
-      console.log('json: >> ', json); 
+      //console.log('json: >> ', json); 
       setData(json); 
     }
 
@@ -58,13 +62,20 @@ export function Home(){
   } 
 
    return (
-    <div className="App">
-      <h2>Viðburðarlisti</h2>
-       <ul>
-          <li>
-              id={data.id}
-          </li>
-       </ul>
-    </div>
-   );
+     <section>
+      <h2 className={s.layout} >Viðburðarlisti</h2>
+       { data.length === 0 && ( <p> ekki </p>) }
+       
+       <ul className={s.ul}>
+       { data.length > 0 && data.map((item, i) => {
+         return (
+            <li className={s.li} key={i}>
+              <a href={item.slug}> { item.namevidburdur } </a> 
+              <p>{ item.description } </p>
+            </li>
+          )
+        })}
+        </ul>
+      </section>
+  );
 }

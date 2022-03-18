@@ -1,0 +1,10 @@
+<ul>
+<li>
+    <Event 
+      title={item.namevidburdur}
+      id={item.id}
+      EventUrl={ `/${item.slug}`}
+      limit={5}
+    />
+</li>
+</ul>

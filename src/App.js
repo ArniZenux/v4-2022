@@ -6,6 +6,7 @@ import { Layout } from './components/layout/Layout';
 
 import { Index } from './pages/home';
 import { Innskra }  from './pages/innskra';
+import { Nyskra }  from './pages/nyskra';
 import { NotFound } from './pages/notfound';
 
 export default function App(){
@@ -17,6 +18,9 @@ export default function App(){
           </Route>
           <Route exact path="/innskra" >
             <Innskra />
+          </Route>
+          <Route exact path="/nyskra" >
+            <Nyskra />
           </Route>
           <Route path="*">
             <NotFound />

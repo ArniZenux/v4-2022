@@ -11,16 +11,10 @@
     font-size: calc(10px + 2vmin);
   }
   
-ul {
-  list-style: none;
-}
-  
-li {
-  display: inline-block;
-  margin-right: 4rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
+  &__little{
+    font-size: 1rem;
+    font-weight: 200;
+  }
 
   &__main {
     margin-bottom: 1rem;
@@ -34,3 +28,14 @@ li {
     align-items: center;
   }
 }
+
+ul {
+  list-style: none;
+}
+  
+li {
+  display: inline-block;
+  margin-right: 4rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+} 

@@ -1,22 +1,24 @@
-import s from './Layout.module.scss';
 import { NavLink } from 'react-router-dom';
 
-export function Layout({ title, children, footer }) {
+import LL from './Layout.module.scss';
+
+export function Layout({ children, footer }) {
   return (
-    <div className={s.layout}>
-      <header className={s.layout__header}>
+    <div className={LL.layout}>
+      <header className={LL.layout__header}>
         <ul>
           <li><NavLink to="/">Viðburðalisti</NavLink></li>
           <li><NavLink to="/innskra">Innskrá</NavLink></li>
           <li><NavLink to="/nyskra">Nýskrá</NavLink></li>
+          <li className={LL.layout__little} >Enginn notandi innskráður</li>
         </ul>
       </header>
 
-      <main className={s.layout__main}>
+      <main className={LL.layout__main}>
         {children}
       </main>
 
-      <footer className={s.layout__footer}>{footer}</footer>
+      <footer className={LL.layout__footer}>{footer}</footer>
     </div>
   )
 }

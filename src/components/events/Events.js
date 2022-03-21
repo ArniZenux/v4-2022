@@ -24,7 +24,7 @@ export function Home(){
       }
       catch(e){
         console.warn('unable to fetch data', e); 
-        setError('Gat ekki sótt efni');
+        setError('Gat ekki sótt efni í vefþjónustu - Bilað í þjónustuna.');
         return; 
       }
       finally{
@@ -41,8 +41,7 @@ export function Home(){
     return (
       <div className="App">
         <h2>Viðburðarlisti</h2>
-          <p> Villa.. {error} </p>
-        <p> Footer Inc </p>
+          <p> Villa: {error} </p>
       </div>
    );
   }
@@ -52,7 +51,6 @@ export function Home(){
      <div className="App">
        <h2>Viðburðarlisti</h2>
           <p> sæki gögn .... loading... </p>
-        <p> Footer Inc </p>
      </div>
     )
   } 
@@ -67,7 +65,6 @@ export function Home(){
            return (
             <li className={s1.Event_layout__li} key={i}>
               <a href={item.slug}> { item.namevidburdur } </a> 
-              <Link to={profa}>Slug</Link>
               <p className={s1.Event_layout__p}>{ item.description } </p>
             </li>
           )

@@ -8,6 +8,7 @@ import { Index } from './pages/home';
 import { Innskra }  from './pages/innskra';
 import { Nyskra }  from './pages/nyskra';
 import { NotFound } from './pages/notfound';
+import { NewEvent } from './pages/event';
 
 export default function App(){
   return (
@@ -22,6 +23,7 @@ export default function App(){
           <Route exact path="/nyskra" >
             <Nyskra />
           </Route>
+          <Route exact path="/events/:id" children={<NewEvent />} />
           <Route path="*">
             <NotFound />
           </Route>

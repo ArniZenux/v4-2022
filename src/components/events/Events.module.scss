@@ -31,4 +31,11 @@
     font-family: 'Inter';
     font-size: 1.5rem;
   }
+  
+  &__item {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 33.33333333%;
+    padding: 0 0.5rem 1rem 0.5rem;
+  }
 }

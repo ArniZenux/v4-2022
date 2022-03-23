@@ -1,0 +1,11 @@
+.Button {
+    &__button  {
+      background-color: #663;
+      border: 1px solid #663;
+      border-radius: 8px;
+      padding: 0.5rem;
+      transition: background-color ease-in 300ms;
+      margin-top: 1rem;
+      width: 10%;
+    }
+}

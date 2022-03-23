@@ -1,5 +1,7 @@
 import React, { useEffect, useState  } from 'react';
-import { Link } from "react-router-dom";
+import { Event } from '../event/Event';
+
+//import { Link } from "react-router-dom";
 
 import s1 from './Events.module.scss';
 
@@ -12,10 +14,13 @@ export function Home(){
 
   useEffect(() => {
     async function fetchData(){
+      setLoading(true); 
+      setError(null); 
+
       let json; 
 
       try{
-        const result = await fetch(apiUrl); 
+        const result = await fetch(apiUrl + '/events'); 
 
         if(!result.ok){
           throw new Error('Ekki ok');
@@ -54,23 +59,47 @@ export function Home(){
      </div>
     )
   } 
-
-   return (
+ 
+  console.log('Events: Data ' + data); 
+ 
+  /*
+  return (
+   <section className={s1.Event_layout__header}>
+    <h2 className={s1.Event_layout__h2} >Viðburðarlisti</h2>
+     { data.length === 0 && ( <p className={s1.Event_layout__h2}> Engir viðburðir </p>) }
+     
+     <ul className={s1.Event_layout__ul}>
+     { data.length > 0 && data.map( (item, i) => {
+         return (
+          <li key={i} className={s1.Event_layout__li}>
+            <a href={ item.id } > { item.namevidburdur } </a>
+            <Link to="/adf" >  { item.namevidburdur } </Link>  
+          </li>
+        )
+      })
+     }
+    </ul>
+  </section>
+  );
+  */
+  return (
     <section className={s1.Event_layout__header}>
       <h2 className={s1.Event_layout__h2} >Viðburðarlisti</h2>
        { data.length === 0 && ( <p className={s1.Event_layout__h2}> Engir viðburðir </p>) }
        
-       <ul className={s1.Event_layout__ul}>
-       { data.length > 0 && data.map( (item, i) => {
+       { data.map( (item, i) => {
            return (
-            <li className={s1.Event_layout__li} key={i}>
-              <a href={item.slug}> { item.namevidburdur } </a> 
-              <p className={s1.Event_layout__p}>{ item.description } </p>
-            </li>
+            <div key={i} className={s1.Event_layout____item}>
+              <Event 
+                title={item.namevidburdur} 
+                id={item.id} 
+                idUrl={`/${item.id}`}
+                limit={3}
+              />
+            </div>
           )
         })
        }
-      </ul>
     </section>
   );
 }

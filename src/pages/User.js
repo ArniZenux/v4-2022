@@ -15,8 +15,7 @@ export const Context = React.createContext({
 });
 
 export default class User extends Component {
-  state = {
-    fetching: false,
+  state = { fetching: false,
     authenticated: !!user,
     message: '',
     user,

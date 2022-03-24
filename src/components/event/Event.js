@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { Form } from '../../components/form/form';
 
-import s1 from './Event.module.scss';
+import se from './Event.module.scss';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -15,7 +15,7 @@ Event.propTypes = {
   limit: PropTypes.number,
 }
 
-export function Event( { title, id , idUrl, limit = -1} ){
+export function Event( { title, id , idUrl} ){
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null);
   const [notFound, setNotFound] = useState(false);
@@ -28,21 +28,12 @@ export function Event( { title, id , idUrl, limit = -1} ){
       setNotFound(false); 
 
       let json; 
-      //console.log("id: " + id);
-      console.log('Title : ' + title); 
-            
       const apiUrlId = apiUrl + '/events/';
-      
-      //console.log(apiUrlId); 
-      
       const url = new URL(id, apiUrlId); 
-      //console.log(url); 
 
       try{
         const result = await fetch(url); 
         
-        //console.log('Result : ' + result); 
-
       if(result.status === 404 ){
         setNotFound(true); 
         return;
@@ -61,8 +52,7 @@ export function Event( { title, id , idUrl, limit = -1} ){
       finally{
         setLoading(false); 
       }
-
-      console.log('json: >> ', json); 
+      
       setData(json);
     }
 
@@ -92,82 +82,55 @@ export function Event( { title, id , idUrl, limit = -1} ){
      <NotFound />
     );
   }
+ 
+  let itemss = []; 
+  let notendur = [];
 
-  let items = []; 
-  
-  if( dataEvent ) {
-    items = dataEvent.items; 
-    console.log(items);
-  } else {
-    console.log("tómur");
-  }
-  console.log("Data utan effect >> "  + dataEvent ); 
-  /*
-  if( dataEvent.length > 0 ){
-    dataEvent.map((item, i) => {
-      //console.log(item.namevidburdur); 
-    })
-    console.log('Nóg af gögn til'); 
-  }
-  else if(dataEvent.items === null )
-  {
-    console.log("null null");
-  } 
- */
-  
-  if ( dataEvent && dataEvent.items ) {
-    if (limit > 0 ){
-      items = dataEvent.items.slice(0, limit)
-      console.log("asdf");
-    } else {
-      items = dataEvent.items;
-      console.log("proa");
-    }
+  if( dataEvent && dataEvent.items){
+      itemss = dataEvent.items;
+      notendur = dataEvent.notendur;
   }
   
-  /*
-  { dataEvent.length > 0 && dataEvent.map( (item, i) => {
-    return ( <p> { item.namevidburdur } </p>)
-    } 
-  )}
-  */
-
+  if( itemss.length === 0 ) {
+    return (  
+      <div className='App'>
+        <section> 
+          <p> Engir viðburðir </p> 
+        </section>
+      </div>
+    )
+  }
+         
   return (
     <div className="App">
       <section>
-        
-        { // dataEvent.length === 0 && ( <p> Engir viðburðir </p> )
-        }
-        <h4>{ 
-
-          /*dataEvent.length > 0 && dataEvent.map( (item, i) => {
-            return ( <a href={item.id} > { item.namevidburdur } </a>)
-          })*/
-        }</h4>
 
         { idUrl && <Link to={'/events'+idUrl}> { title } </Link> } 
-  
+
+        { !idUrl && ( itemss && itemss.length > 0 && itemss.map((item,i ) => {
+          return (  
+                <ul className={se.layout__ul}> 
+                  <li className={se.layout__li}>  { item.namevidburdur } </li>
+                  <li className={se.layout__li2}> { item.description }</li>
+                </ul>
+                )
+             })
+         ) }
+        { !idUrl && ( <hr className={se.layout__hr}/> ) }
+        { !idUrl && ( notendur && notendur.length > 0 && notendur.map((item,i ) => {
+          return (  
+                <ul className={se.layout__ul}> 
+                  <li className={se.layout__li}> { item.nameskra } </li>
+                  <li className={se.layout__li2}> { item.comment }</li>
+                </ul>
+                )
+             })
+         ) }
+
         { !idUrl && ( <Form/> ) } 
         { !idUrl && ( <Link to="/"> Til baka </Link> ) }
 
       </section>
     </div>
-   
-   /*<section>
-      <p> {data.title }</p> 
-      
-      {data.length ===0 && ( 
-        <p>Engir viðburðir</p>
-      )}
-
-      {data.length > 0 && data.map((item,i) => {
-        return (
-          <li className={s1.Event_layout__li} key={i}>
-              <a href={item.slug}> { item.namevidburdur } </a> 
-              <p className={s1.Event_layout__p}>{ item.description } </p>
-            </li>
-        )
-      })}
-    </section>*/
   );
 }

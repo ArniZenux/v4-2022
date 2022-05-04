@@ -16,9 +16,12 @@ export function Home(){
       setError(null); 
 
       let json; 
+      
+      console.log(apiUrl); 
 
       try{
         const result = await fetch(apiUrl + '/events'); 
+        console.log(result);
 
         if(!result.ok){
           throw new Error('Ekki ok');
@@ -34,6 +37,8 @@ export function Home(){
         setLoading(false); 
       }
       setData(json); 
+      console.log(json); 
+
     }
 
     fetchData(); 
@@ -57,10 +62,13 @@ export function Home(){
     )
   } 
 
+  // { data.length === 0 && ( <p className={s1.Event_layout__h2}> Engir viðburðir </p>) }
+
+  console.log(data); 
+  
   return (
     <section className={s1.Event_layout__header}>
       <h2 className={s1.Event_layout__h2} >Viðburðarlisti</h2>
-       { data.length === 0 && ( <p className={s1.Event_layout__h2}> Engir viðburðir </p>) }
        
        { data.map( (item, i) => {
            return (

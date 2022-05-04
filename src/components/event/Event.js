@@ -1,5 +1,5 @@
 import React, { useEffect, useState  } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { NotFound } from '../../pages/notfound';
 import PropTypes from 'prop-types';
 
@@ -30,6 +30,7 @@ export function Event( { title, id , idUrl} ){
       let json; 
       const apiUrlId = apiUrl + '/events/';
       const url = new URL(id, apiUrlId); 
+      console.log(url); 
 
       try{
         const result = await fetch(url); 
@@ -54,6 +55,7 @@ export function Event( { title, id , idUrl} ){
       }
       
       setData(json);
+      console.log(json);
     }
 
     fetchData(); 
@@ -95,7 +97,7 @@ export function Event( { title, id , idUrl} ){
     return (  
       <div className='App'>
         <section> 
-          <p> Engir viðburðir </p> 
+          <p> Engir viðburðir</p> 
         </section>
       </div>
     )
